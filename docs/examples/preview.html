@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rabi Raster · export comparison</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;padding:32px;background:#17161a;color:#e9e4f1;font:15px system-ui,sans-serif}main{max-width:1400px;margin:auto}h1{font-weight:550;margin:0 0 8px}p{color:#aba6b4;line-height:1.5}a{color:#b8acff}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}figure{margin:0;border:1px solid #39333e;border-radius:12px;overflow:hidden}video,img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background-color:#f4f1f8;background-image:conic-gradient(#d5d0db 25%,transparent 0 50%,#d5d0db 0 75%,transparent 0);background-size:24px 24px}figcaption{padding:14px;font-size:13px}small{color:#aba6b4}button{background:#b8acff;color:#17161a;padding:10px 16px;border:0;border-radius:6px;font:inherit;cursor:pointer;margin:0 8px 20px 0}@media(max-width:720px){body{padding:18px}.grid{grid-template-columns:1fr}}
+</style>
+<main>
+  <h1>One loop, three export settings</h1>
+  <p>Native video playback on a checkerboard. The checkerboard is part of this page, not the exported files. <a href="/">Back to the editor</a>.</p>
+  <button id="play">Play all</button><button id="pause">Pause all</button><button id="restart">First frame</button>
+  <div class="grid">
+    <figure><video preload="auto" muted loop playsinline src="rabi-raster-waves-transparent-web-24fps-800x450.webm"></video><figcaption>Web · 800 × 450 · 24 fps · 6 seconds · 392 kB</figcaption></figure>
+    <figure><video preload="auto" muted loop playsinline src="rabi-raster-waves-transparent-web-24fps.webm"></video><figcaption>Web · 1600 × 900 · 24 fps · 6 seconds · 1.28 MB</figcaption></figure>
+    <figure><video preload="auto" muted loop playsinline src="rabi-raster-waves-transparent-high-30fps.webm"></video><figcaption>High · 1600 × 900 · 30 fps · 6 seconds · 3.21 MB</figcaption></figure>
+    <figure><img src="rabi-raster-waves-transparent-direct-frame0-1600x900.png" alt="Uncompressed source frame for visual comparison"><figcaption>PNG reference · original first frame · 1600 × 900</figcaption></figure>
+  </div>
+  <p><small>Compare at the intended display size. Transparent video playback depends on the browser. This page is a local quality check, not portfolio integration.</small></p>
+</main>
+<script>
+  const videos=[...document.querySelectorAll('video')];
+  document.querySelector('#play').onclick=()=>videos.forEach(video=>video.play().catch(()=>{}));
+  document.querySelector('#pause').onclick=()=>videos.forEach(video=>video.pause());
+  document.querySelector('#restart').onclick=()=>videos.forEach(video=>{video.pause();video.currentTime=0;});
+</script>
+</html>
