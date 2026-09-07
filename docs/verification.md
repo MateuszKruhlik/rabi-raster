@@ -1,8 +1,23 @@
 # Rabi Raster verification
 
-Verified locally on 2026-09-06 against `http://127.0.0.1:5199/` in Playwright Chromium 145.
+## Current status, 2026-09-07
 
-## Automated checks
+Current local verification covers the working tree, including the relative brand-asset path used by production builds:
+
+- `npm test`: PASS, 5 files and 48 tests.
+- `npm run build`: PASS, TypeScript and Vite production build; 513 modules transformed. The editor bundle is 713.88 kB minified and 213.88 kB gzip. Vite reports a non-blocking large-chunk warning.
+- `npm run test:browser`: PASS, 20 Playwright tests in Chromium.
+- Production static smoke: PASS at `/` and `/playground/rabi-raster/app/`; the brand image returned HTTP 200 and loaded with a non-zero natural width at both paths.
+
+Baseline GitHub validation for commit `bd2923358788122e84bb33c6796873bb66d3b85e` is recorded in [GitHub Actions run 34057169701](https://github.com/matikkutik/rabi-raster/actions/runs/34057169701). Unit tests and the production build passed, followed by 20 Chromium browser tests. Local changes made after that commit are not covered by this run. After pushing a new commit, use the repository's [CI workflow](https://github.com/matikkutik/rabi-raster/actions/workflows/ci.yml) to verify its result.
+
+Automated browser coverage is currently Chromium-only. Safari and Firefox verification was deferred by the owner on 2026-09-07 and must not be treated as passed. In particular, transparent VP9 WebM playback still needs a PNG fallback for Safari.
+
+## Historical verification record
+
+The sections below preserve evidence from successive checks on 2026-09-06. Their test counts and bundle sizes describe those stages, not the current status above.
+
+## Initial automated baseline, 2026-09-06
 
 - `npm test`: PASS, 3 files and 29 tests, final run at 16:41 local time.
 - `npm run build`: PASS, TypeScript and Vite production build; 505 modules transformed. Vite reports one non-blocking large-chunk warning for the 697.72 kB editor bundle. The editor is not included in exported media.
@@ -22,13 +37,13 @@ The browser suite proves:
 - transparent WebM contains 24 alpha packets per second, native HTMLVideoElement playback preserves empty pixels and moving ink, and a translucent foreground remains close to the phase-matched renderer reference after compositing;
 - MP4 is explicitly rejected and disabled when a transparent background is selected.
 
-## Manual browser QA
+## Initial manual browser QA, 2026-09-06
 
 The root session also checked presets and renderer modes, pause/restart, a 390 x 844 mobile viewport, a 1600 x 900 PNG, and a 6-second WebM with 180 frames through the live UI. No console warning or error was observed, and the product styles contain no Google Fonts imports.
 
 For the transparency update, root inspected screenshots of Contours, Orbits and Interference, then compared all three final WebM assets against an original transparent PNG in a native video gallery. All three videos played, reported duration 6 seconds and had no media error. The gallery also verifies the reference PNG loads and the checkerboard is visible through the video background. See `docs/examples/preview.html` while the local server is running.
 
-## File size and visual fidelity
+## File size and visual fidelity, 2026-09-06
 
 Measured in Chromium for the same default Waves scene, 6 seconds, transparent background. MB and kB use decimal units. PSNR compares the first native decoded frame with the original renderer on a navy background; it is a bounded quality measurement for this scene, not a guarantee for every pattern or frame.
 
@@ -59,12 +74,12 @@ Transparent playback is verified in Chromium. The [open WebKit VP9 alpha issue](
 
 No portfolio page-load performance audit or publication was run. Media sizes were measured; whole-site performance was not.
 
-## Independent image, style and motion controls
+## Independent image, style and motion controls, 2026-09-06
 
 The photo regression now uploads an image, applies Mono Grid, verifies image/motion/palette/output remain selected, varies motion and look separately, and checks exact canvas restoration after each undo. Pulse and Scatter & return change the frame at mid-loop and return exactly at the cycle boundary. The same photo exports PNG and a transparent 48-frame, 2-second WebM. The extended focused regression passed separately in 5.4 s after the final control layout change. Unit coverage includes strict preset ownership, reversible independent variation groups, legacy motion defaults, image motion seed independence, pulse and scatter seam behavior.
 
 
-## Reference-inspired effects, multicolor alpha and SVG (2026-09-06)
+## Reference-inspired effects, multicolor alpha and SVG, 2026-09-06
 
 Final integrated verification after engine and UI review:
 

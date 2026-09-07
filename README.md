@@ -30,6 +30,8 @@ The editor keeps source, effect, motion, palette, and output controls independen
 
 Requires Node.js 22.12 or newer and npm.
 
+The GitHub repository is currently private. You need access to `matikkutik/rabi-raster` and authenticated Git credentials before cloning it.
+
 ```sh
 git clone https://github.com/matikkutik/rabi-raster.git
 cd rabi-raster
@@ -44,7 +46,7 @@ npm run build
 npm run preview
 ```
 
-A current Chromium browser is recommended for video export. Video codec availability still depends on the browser and operating system.
+Automated browser verification currently runs in Chromium. Video export availability still depends on the browser, operating system, and available video encoders.
 
 ## Generators and renderers
 
@@ -60,7 +62,7 @@ Generators create the underlying image field. Renderers decide how that field be
 | Renderer | Result |
 | --- | --- |
 | Halftone | Circles, squares, or rounded marks sized by tone |
-| Dither | A fixed ordered pattern for crisp tonal detail |
+| Dither | A fixed 4 × 4 Bayer pattern for crisp tonal detail |
 | ASCII | A customizable character ramp sampled from the source |
 | Dot Matrix | Fixed-size dots controlled by opacity or brightness |
 | Contour Particles | Points anchored to detected edges |
@@ -88,7 +90,7 @@ See [Using Rabi Raster assets on a website](docs/website-use.md) for loading, fa
 
 ### Photo to graphic dots
 
-1. Choose **Source > Image** and select a local photo.
+1. Open **Source**, set **Pattern** to **Image**, then choose a local photo in **Image**.
 2. Start with **Soft Dots** or **Dot Matrix**.
 3. Adjust Density, Mark size, Contrast, and Invert.
 4. Use **Text space** if the image will sit behind a heading.
@@ -96,15 +98,15 @@ See [Using Rabi Raster assets on a website](docs/website-use.md) for loading, fa
 
 ### Transparent website loop
 
-1. Choose Ribbon, Organic Field, or another generated pattern.
-2. Turn on a movement and preview the full loop.
-3. Set **Transparent** to on and choose **WebM**.
-4. Start with Web quality, 24 fps, and 1x resolution.
+1. Open **Source** and set **Pattern** to Ribbon, Organic Field, or another generated pattern.
+2. In **Motion**, choose a **Movement** and preview the full loop.
+3. In **Output**, set **Transparent** to On and **Video** to WebM.
+4. Start with **Quality** set to Web · compact, **Frame rate** set to 24, and **Resolution** set to 1×.
 5. Export a matching transparent PNG as the fallback.
 
 ### ASCII poster study
 
-1. Choose a photo or generated source.
+1. Open **Source** and choose a generated **Pattern**, or set **Pattern** to **Image** and choose a local photo.
 2. Select the **ASCII** renderer or the **Type Field** style.
 3. Edit the Glyphs ramp, then tune Density and Contrast.
 4. Export PNG when font consistency matters, or SVG when editable text is more useful.

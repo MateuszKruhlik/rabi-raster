@@ -29,7 +29,7 @@ These are integration recommendations, not implemented portfolio changes. See Go
 
 Choose a generated source, then change Seed for a new composition and Pattern scale for broader or finer structure. Density sets the number of grid columns; Mark size controls the thickness of each mark without moving the grid. Choose Halftone, Dither or ASCII to reinterpret the same field. Set a color, motion and duration, then save settings.
 
-Alternatively, import a locally drawn texture, logo or photograph under Source → Image. Dark areas become ink by default; Invert reverses that mapping. Source alpha is retained. Settings files deliberately omit image bytes, so keep the original image alongside the settings and select it again after loading them.
+Alternatively, open Source, set Pattern to Image, then choose a locally drawn texture, logo or photograph in Image. Dark areas become ink by default; Invert reverses that mapping. Source alpha is retained. Settings files deliberately omit image bytes, so keep the original image alongside the settings and select it again after loading them.
 
 
 ## Reference effects and vector frames

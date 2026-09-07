@@ -30,6 +30,10 @@ import { createVariation, type VariationKind } from './app/variation';
 import type { RasterDialUpdates } from './app/config';
 import { useLoopClock } from './app/use-loop-clock';
 
+const APP_BASE_URL = (import.meta as ImportMeta & {
+  readonly env: { readonly BASE_URL: string };
+}).env.BASE_URL;
+
 const STYLE_PREVIEWS = RASTER_PRESETS.map(preset => ({
   ...DEFAULT_RASTER_SETTINGS,
   mode: (preset.values.Effect?.Renderer ?? DEFAULT_RASTER_SETTINGS.mode) as RasterSettings['mode'],
@@ -383,7 +387,7 @@ function App() {
     <main className="app-shell">
       <header className="topbar">
         <a className="brand" href="./" aria-label="Rabi Raster home">
-          <img className="brand-mark" src="/brand/mark.svg" width="40" height="40" alt="" />
+          <img className="brand-mark" src={`${APP_BASE_URL}brand/mark.svg`} width="40" height="40" alt="" />
           <span>
             <strong>Rabi Raster</strong>
             <small>by Rabituza Studio</small>
