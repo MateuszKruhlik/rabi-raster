@@ -30,10 +30,10 @@ The editor keeps source, effect, motion, palette, and output controls independen
 
 Requires Node.js 22.12 or newer and npm.
 
-The GitHub repository is currently private. You need access to `matikkutik/rabi-raster` and authenticated Git credentials before cloning it.
+Clone the public repository:
 
 ```sh
-git clone https://github.com/matikkutik/rabi-raster.git
+git clone https://github.com/MateuszKruhlik/rabi-raster.git
 cd rabi-raster
 npm ci
 npm run dev
@@ -158,4 +158,4 @@ Rabi Raster uses [DialKit](https://www.dialkit.dev/) by Josh Puckett for its edi
 
 ## License status
 
-A license for the original Rabi Raster project code has not been selected yet. Public open-source release is pending that decision. Do not infer a project license from the licenses of its dependencies.
+The source code is publicly visible. A license for the original Rabi Raster project code has not been selected yet, so the project is not currently offered under an open-source license. Third-party components retain their own licenses; these do not license the original project code.

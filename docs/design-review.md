@@ -25,4 +25,4 @@ Pattern and Renderer now use product-owned visual menus through the public DialK
 
 The sidebar still includes advanced controls grouped by function. Further conditional visibility would require a separate controller change; this revision does not hide inactive options through fragile DOM selectors.
 
-The repository includes a real editor screenshot, a gallery entry point, contribution instructions and a CI workflow. Example mockups and a public project license remain separate decisions. GitHub CI has not been run until a remote repository exists.
+The repository includes a real editor screenshot, a gallery entry point, contribution instructions and a CI workflow. Example mockups and a project license remain separate decisions. See the [verification record](verification.md) for current local and GitHub CI evidence.

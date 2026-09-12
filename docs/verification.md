@@ -9,7 +9,7 @@ Current local verification covers the working tree, including the relative brand
 - `npm run test:browser`: PASS, 20 Playwright tests in Chromium.
 - Production static smoke: PASS at `/` and `/playground/rabi-raster/app/`; the brand image returned HTTP 200 and loaded with a non-zero natural width at both paths.
 
-Baseline GitHub validation for commit `bd2923358788122e84bb33c6796873bb66d3b85e` is recorded in [GitHub Actions run 34057169701](https://github.com/matikkutik/rabi-raster/actions/runs/34057169701). Unit tests and the production build passed, followed by 20 Chromium browser tests. Local changes made after that commit are not covered by this run. After pushing a new commit, use the repository's [CI workflow](https://github.com/matikkutik/rabi-raster/actions/workflows/ci.yml) to verify its result.
+GitHub validation in the development repository passed for commit `d4ef3341e3a221e392e52e63d931bface9f87217` (run `34159297962`, verified on 2026-09-12): 48 unit tests, the production build and 20 Chromium browser tests. After a new commit is synchronized, use the public repository's [CI workflow](https://github.com/MateuszKruhlik/rabi-raster/actions/workflows/ci.yml) to check its own result. The historical records below describe earlier stages.
 
 Automated browser coverage is currently Chromium-only. Safari and Firefox verification was deferred by the owner on 2026-09-07 and must not be treated as passed. In particular, transparent VP9 WebM playback still needs a PNG fallback for Safari.
 
